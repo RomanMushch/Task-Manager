@@ -1,0 +1,41 @@
+<div class="container-fluid">
+  <div class="row justify-content-center pt-5">
+    <div class="col-9">
+      <a routerLink="/tasks" class="text-dark">
+        <fa-icon icon="chevron-left"></fa-icon>
+        <span> Back</span>
+      </a>
+      <h2>Create new task</h2>
+      <form class="row bg-white" (submit)="addNewTask()">
+        <div class="col-7">
+          <div class="form-group">
+            <label for="title">Title</label>
+            <input type="text" id="title" class="form-control" name="title" [(ngModel)]="addTaskModel.title"
+                   #Title="ngModel">
+          </div>
+          <div class="form-group">
+            <label for="desc">Description</label>
+            <textarea id="desc" name="description" class="form-control" [(ngModel)]="addTaskModel.description"
+                      #Desc="ngModel"></textarea>
+          </div>
+          <div class="form-group">
+            <label>Priority</label><br>
+            <button class="btn mr-2 btn-sm" *ngFor="let type of priorityTypes" type="button"
+                    [ngClass]="{'btn-info': !type.Selected, 'btn-warning': type.Selected}"
+            (click)="onChoosePriority(type.Type)">{{type.Type}}</button>
+          </div>
+        </div>
+        <div class="col-5 ">
+          <label>Date</label>
+          <div>
+            <ngb-datepicker #dp [(ngModel)]="model" name="someName" (navigate)="date = $event.next"
+                            [minDate]="today"></ngb-datepicker>
+          </div>
+        </div>
+        <div class="col-12">
+          <button class="btn btn-add-new btn-sm" type="submit">Save</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

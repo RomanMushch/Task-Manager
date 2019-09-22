@@ -1,0 +1,44 @@
+<div class="container-fluid">
+  <div class="row justify-content-center pt-5">
+    <div class="col-9">
+      <a routerLink="/tasks" class="text-dark">
+        <fa-icon icon="chevron-left"></fa-icon>
+        <span> Back</span>
+      </a>
+      <h2>Task details</h2>
+      <div class="row bg-white">
+        <table class="table" *ngIf="taskDetails$">
+          <tr>
+            <th width="50%">Title</th>
+            <th>Priority</th>
+            <th>Date</th>
+            <th>Actions</th>
+          </tr>
+          <tr>
+            <td>{{taskDetails$.task.title}}</td>
+            <td>
+              <fa-icon icon="long-arrow-alt-up" class="text-danger"
+                       *ngIf="taskDetails$.task.priority==='High'"></fa-icon>
+              <fa-icon icon="arrows-alt-v" class="text-warning"
+                       *ngIf="taskDetails$.task.priority==='Normal'"></fa-icon>
+              <fa-icon icon="long-arrow-alt-down" class="text-success"
+                       *ngIf="taskDetails$.task.priority==='Low'"></fa-icon>
+              {{taskDetails$.task.priority}}
+            </td>
+            <td>
+              {{taskDetails$.task.dueBy | date: 'dd/MM/yyyy'}}
+            </td>
+            <td>
+              <a class="mr-3 text-success" routerLink="/add-update-task/{{taskId}}">
+                <fa-icon icon="pen"></fa-icon>
+              </a>
+              <a class="text-danger" (click)="onDeleteTask()">
+                <fa-icon icon="trash"></fa-icon>
+              </a>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

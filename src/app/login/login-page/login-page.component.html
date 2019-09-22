@@ -1,0 +1,26 @@
+<div class="container-fluid login-layout">
+  <div class="row justify-content-center align-content-center h-100">
+    <div class="col-4 login-form p-5">
+      <form (ngSubmit)="onSubmit()">
+        <h2>Sign in</h2>
+          <div class="form-group">
+            <label for="userId"></label>
+            <input type="email" id="userId" class="form-control" placeholder="Email"
+                   name="userId" [(ngModel)]="loginModel.email"
+                   #UserId="ngModel" required autocomplete="off">
+          </div>
+          <div class="form-group">
+            <label for="password"></label>
+            <input type="password" id="password" class="form-control" placeholder="Password"
+                   [(ngModel)]="loginModel.password" name="password" autocomplete="off"
+                   #Password="ngModel" required>
+          </div>
+          <div class="form-group">
+            <label for="rememberMe">Remember me</label>
+            <input type="checkbox" id="rememberMe">
+          </div>
+          <button class="btn btn-block" type="submit">Sign in</button>
+      </form>
+    </div>
+  </div>
+</div>
