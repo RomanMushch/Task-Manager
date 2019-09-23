@@ -10,18 +10,26 @@ import {compare, SortEvent, TableSortableDirective} from "../../directives/table
 })
 export class TasksListComponent implements OnInit {
   tasksList$: any;
-
+  tracks: any[];
   constructor(private userSvc:UserService, private baseSvc: BaseService) { }
 
   ngOnInit() {
     this.userSvc.getTasksList(undefined)
       .subscribe(response => {
         this.tasksList$ = response;
+        localStorage.setItem('TaskLists', JSON.stringify(response));
         this.tasksList$['tasks'].forEach(task => {
           task.priorityCode = this.baseSvc.getPriorityCode(task.priority)
           task.dueBy = this.baseSvc.getDateFromTimestamp(task.dueBy)
         })
-        // console.log(JSON.stringify(response))
+
+      }, error => {
+       if (error.status === 0) {
+         // console.log()
+         this.tasksList$ = JSON.parse(localStorage.getItem('TaskLists'))
+       } else {
+         alert(error.error.message)
+       }
       })
   }
   @ViewChildren(TableSortableDirective) headers: QueryList<TableSortableDirective>;

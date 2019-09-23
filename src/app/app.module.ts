@@ -15,6 +15,9 @@ library.add(fas);
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { UpdateDeleteTaskComponent } from './tasks/update-delete-task/update-delete-task.component';
 import { TableSortableDirective } from './directives/table-sortable.directive';
+import { DragDropModule } from '@angular/cdk/drag-drop';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {MatCardModule} from '@angular/material/card';
 
 @NgModule({
   declarations: [
@@ -31,7 +34,10 @@ import { TableSortableDirective } from './directives/table-sortable.directive';
     FormsModule,
     HttpClientModule,
     FontAwesomeModule,
-    NgbModule
+    NgbModule,
+    DragDropModule,
+    BrowserAnimationsModule,
+    MatCardModule
   ],
   providers: [],
   bootstrap: [AppComponent]
