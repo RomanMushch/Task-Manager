@@ -9,7 +9,7 @@
       </div>
       <div class="row">
         <div class="col bg-white">
-          <table class="table table-hover" *ngIf="tasksList$">
+          <table class="table table-hover table-striped" *ngIf="tasksList$">
             <thead>
             <tr>
               <th scope="col" sortable="title" (sort)="onSort($event)">Title</th>
